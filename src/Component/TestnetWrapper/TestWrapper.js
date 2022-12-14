@@ -87,9 +87,59 @@ export const WalletForm = styled.div`
         }
     }
     
-
-
+    button {
+        background: #9b1fe9;
+        color: #fff;
+        font-size: 14px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 3px;
+    }
 `
+export const RequestHistory = styled.div`
+    margin-top: 30px;
 
+    h2 {
+        margin-bottom: 20px;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    ul.nav {
+        border: none;
+
+        li {
+            button.nav-link {
+                margin-right: 10px;
+                padding: 10px 15px;
+                background: #f5f7fd;
+                font-size: 13px;
+                border-radius: 3px;
+                border: none;
+                color: #000;
+            }
+
+            button.nav-link.active{
+                background: #00f;
+                color: #fff;
+            }
+        } 
+    }
+
+    table{
+        border-collapse: collapse;
+
+        thead, tbody {
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid #eee;
+            padding: 8px;
+            font-size: 14px;
+            min-width: 80px;
+        }
+    }
+`
 
 

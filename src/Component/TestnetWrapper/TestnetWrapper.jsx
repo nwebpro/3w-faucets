@@ -1,14 +1,52 @@
-import React, { useState } from 'react';
-import { Button, Container, Form } from 'react-bootstrap';
-import { ContentTitle, FormWarning, FormWrapper, TestnetWrapperStyle, WalletForm } from './TestWrapper';
+import React from 'react';
+import { Container, Form, Tab, Tabs } from 'react-bootstrap';
+import { ContentTitle, FormWarning, FormWrapper, RequestHistory, TestnetWrapperStyle, WalletForm } from './TestWrapper';
 import { RiAlertFill } from 'react-icons/ri'
 import ReCAPTCHA from "react-google-recaptcha";
 
-const TestnetWrapper = () => {
-    const [verified, setVerified] = useState(false)
+const ethTransactionHistory = [
+    {
+        "time": "12:30 AM",
+        "amount": "487",
+        "hash": "4s8er5s5fe57rjmxnfuewrurks"
+    },
+    {
+        "time": "10:30 AM",
+        "amount": "875",
+        "hash": "sf7s7ers4e7r7wser"
+    },
+    {
+        "time": "11:30 AM",
+        "amount": "797",
+        "hash": "se4s7er7"
+    }
+]
 
+const testLinkTransactionHistoryData = [
+    {
+        "time": "08:30 AM",
+        "amount": "748",
+        "hash": "7s7effkeurusue4"
+    },
+    {
+        "time": "10:23 AM",
+        "amount": "974",
+        "hash": "sfe7r7sr4fer"
+    },
+    {
+        "time": "11:10 AM",
+        "amount": "874",
+        "hash": "s4e7s8er"
+    }
+]
+
+const TestnetWrapper = () => {
     const handleReCaptcha = value => {
-        setVerified(true)
+        console.log('ReCaptcha Clicked');
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
     }
     return (
         <TestnetWrapperStyle>
@@ -23,7 +61,7 @@ const TestnetWrapper = () => {
                         <p>Your wallet is connected to <span>{`Harmony Testnet`}</span>, so you are requesting <span>{`Harmony Testnet`}</span> Link/ETH.</p>
                     </FormWarning>
                     <WalletForm>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Form.Group>
                                 <Form.Label>Wallet Address</Form.Label>
                                 <Form.Control type="text" placeholder="Wallet Address..." />
@@ -36,15 +74,73 @@ const TestnetWrapper = () => {
                                 </div>
                             </Form.Group>
                             <ReCAPTCHA
-                                className='mt-3'
-                                sitekey={`${process.env.reCAPTCHA_SITE_KEY}`}
+                                className='mt-3 mb-3'
+                                sitekey='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
                                 onChange={handleReCaptcha}
                             />
-                            <Button variant="primary" type="submit" disabled={ !verified }>
-                                Submit
-                            </Button>
+                            <button type="submit">
+                                Send Request
+                            </button>
                         </Form>
                     </WalletForm>
+                    <RequestHistory>
+                        <h2>Request History</h2>
+                        <Tabs
+                            defaultActiveKey="ethTransactionHistory"
+                            transition={false}
+                            className="mb-3"
+                            >
+                            <Tab eventKey="ethTransactionHistory" title="ETH Transaction History">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                        <th>Sr</th>
+                                        <th>Time</th>
+                                        <th>Amount</th>
+                                        <th>Hash</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            ethTransactionHistory.map((item, i) => (
+                                                <tr key={i}>
+                                                    <td>{ i + 1 }</td>
+                                                    <td>{item.time}</td>
+                                                    <td>{item.amount}</td>
+                                                    <td>{item.hash}</td>
+                                                </tr>
+                                            ))
+                                        }
+                                    </tbody>
+                                </table>
+                            </Tab>
+                            <Tab eventKey="testLinkTransactionHistory" title="TestLink Transaction History">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                        <th>Sr</th>
+                                        <th>Time</th>
+                                        <th>Amount</th>
+                                        <th>Hash</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            testLinkTransactionHistoryData.map((item, i) => (
+                                                <tr key={i}>
+                                                    <td>{ i + 1 }</td>
+                                                    <td>{item.time}</td>
+                                                    <td>{item.amount}</td>
+                                                    <td>{item.hash}</td>
+                                                </tr>
+                                            ))
+                                        }
+                                        
+                                    </tbody>
+                                </table>
+                            </Tab>
+                        </Tabs>
+                    </RequestHistory>
                 </FormWrapper>
             </Container>
         </TestnetWrapperStyle>
