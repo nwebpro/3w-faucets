@@ -37,7 +37,7 @@ const TestnetWrapper = () => {
                             </Form.Group>
                             <ReCAPTCHA
                                 className='mt-3'
-                                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                                sitekey={`${process.env.reCAPTCHA_SITE_KEY}`}
                                 onChange={handleReCaptcha}
                             />
                             <Button variant="primary" type="submit" disabled={ !verified }>
