@@ -1,16 +1,11 @@
 import React from 'react';
-import Footer from './Component/Footer/Footer';
-import Header from './Component/Navbar/Header';
-import Notice from './Component/Notice/Notice';
-import TestnetWrapper from './Component/TestnetWrapper/TestnetWrapper';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './Routes/Routes';
 
 const App = () => {
     return (
         <>
-            <Header />
-            <Notice />
-            <TestnetWrapper />
-            <Footer />
+            <RouterProvider router={router} />
         </>
     );
 };
