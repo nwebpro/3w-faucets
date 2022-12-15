@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Form, Tab, Tabs } from 'react-bootstrap';
 import { ContentTitle, FormWarning, FormWrapper, RequestHistory, TestnetWrapperStyle, WalletForm } from './TestWrapper';
 import { RiAlertFill } from 'react-icons/ri'
 import ReCAPTCHA from "react-google-recaptcha";
+import { WalletDataContext } from '../../Context/WalletDataProvider';
 
 const ethTransactionHistory = [
     {
@@ -41,6 +42,8 @@ const testLinkTransactionHistoryData = [
 ]
 
 const TestnetWrapper = () => {
+    const { walletDataStore } = useContext(WalletDataContext)
+
     const handleReCaptcha = value => {
         console.log('ReCaptcha Clicked');
     }
@@ -58,7 +61,7 @@ const TestnetWrapper = () => {
                 <FormWrapper>
                     <FormWarning>
                         <RiAlertFill />
-                        <p>Your wallet is connected to <span>{`Harmony Testnet`}</span>, so you are requesting <span>{`Harmony Testnet`}</span> Link/ETH.</p>
+                        <p>Your wallet is connected to <span>{walletDataStore}</span>, so you are requesting <span>{walletDataStore}</span> Link/ETH.</p>
                     </FormWarning>
                     <WalletForm>
                         <Form onSubmit={handleSubmit}>

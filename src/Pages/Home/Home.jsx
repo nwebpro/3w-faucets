@@ -2,7 +2,7 @@ import React from 'react';
 import Notice from '../../Component/Notice/Notice';
 import TestnetWrapper from '../../Component/TestnetWrapper/TestnetWrapper';
 
-const Home = () => {
+const Home = ({ walletDataStore }) => {
     return (
         <>
             <Notice />

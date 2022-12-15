@@ -3,4 +3,34 @@ body {
   margin: 0;
   font-family: 'Varela Round', sans-serif;
 }
+.modal-content {
+  border-radius: 0px !important;
+}
+.btn-close:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+.modal-header {
+  border-bottom: 0px solid transparent !important;
+}
+.modal-title.h4 {
+  font-size: 25px;
+  font-weight: 600;
+  color: #000;
+  font-family: "Varela Round",sans-serif;
+}
+.modal_item {
+  background: #f5f7fd;
+  padding: 20px;
+  width: 50%;
+  text-align: center;
+  margin: 10px;
+  cursor: pointer;
+}
 
+.modal_item h4 {
+  font-family: "Varela Round",sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #9b1fe9;
+}
