@@ -1,18 +1,19 @@
 import React from 'react';
-import { Container, Navbar } from 'react-bootstrap';
-import { HeaderWrapper, LogoArea } from './HeaderStyle';
+import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { HeaderWrapper, LogoArea, NavStyle } from './HeaderStyle';
 
 const Header = () => {
     return (
-        <Navbar>
+        <NavStyle>
             <Container>
                 <HeaderWrapper>
                     <LogoArea>
-                        <a href="">Faucets</a>
+                        <Link to="/">Faucets</Link>
                     </LogoArea>
                 </HeaderWrapper>
             </Container>
-        </Navbar>
+        </NavStyle>
     );
 };
 

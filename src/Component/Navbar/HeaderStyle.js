@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const NavStyle = styled.nav`
+    border-bottom: 1px solid #eee;
+`
+
 export const HeaderWrapper = styled.div`
     padding: 18px 0;
 `
